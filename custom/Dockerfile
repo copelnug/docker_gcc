@@ -116,7 +116,7 @@ RUN set -ex; \
 	/usr/src/gcc/configure \
 		--build="$gnuArch" \
 		--disable-multilib \
-		--enable-languages=c,c++,fortran,go \
+		--enable-languages=c,c++ \
 		$extraConfigureArgs \
 	; \
 	make -j "$(nproc)"; \
@@ -139,6 +139,5 @@ RUN set -ex; \
 RUN set -ex; \
 	dpkg-divert --divert /usr/bin/gcc.orig --rename /usr/bin/gcc; \
 	dpkg-divert --divert /usr/bin/g++.orig --rename /usr/bin/g++; \
-	dpkg-divert --divert /usr/bin/gfortran.orig --rename /usr/bin/gfortran; \
 update-alternatives --install /usr/bin/cc cc /usr/local/bin/gcc 999
 
